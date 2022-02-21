@@ -112,7 +112,7 @@ fn main() {
   let mut input_x = 1;
   let mut input_y = 1;
 
-  let mut input_char;
+  let mut input_char = ' ' as i32;
   let mut prev_char = 0;
   let mut nwords: u64 = 0;
   let mut alpha: [i32; 26] = [0; 26];
@@ -160,7 +160,7 @@ fn main() {
       }
     }
     // handle enter
-    else if input_char == 10 {
+    else if input_char == '\n' as i32 {
       input_y += 1;
       input_x=1;
       prev_char = input_char;

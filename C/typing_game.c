@@ -144,7 +144,7 @@ int main(int argc, char**argv){
 				words++;
 		}
 		// handle enter
-		else if(inputChar == 10) {
+		else if(inputChar == '\n') {
 			input_y++;
 			input_x=1;
 			prevChar = inputChar;
