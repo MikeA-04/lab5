@@ -44,8 +44,10 @@ char get_first_char_for_case(int c) {
 void printStat(WINDOW* output, time_t start_t, time_t end_t, int words){
 
 	/* TODO 5a: print alphabet frequency stats using mvwprintw */
-
+	// mvwprintw(WINDOW, LINE, COLUMN, FORMAT, [ARGUMENTS...])
+	mvwprintw(output, line, column, "%s", words);
 	/* TODO 5b: print number frequency stats using mvwprintw */
+	mvwprintw(output, );
 
 	/* Print timing stats */
 	double diff_in_sec;
@@ -62,6 +64,7 @@ void printStat(WINDOW* output, time_t start_t, time_t end_t, int words){
 	s = (int)diff_in_sec;
 
 	/* TODO 5c: print timing stats using mvwprintw */
+	mvwprintw(output, );
 
   	/* TODO 4: refresh window using wrefresh 
 	 * You won't notice a difference though, until one of TODO 5 is implemented
@@ -69,6 +72,7 @@ void printStat(WINDOW* output, time_t start_t, time_t end_t, int words){
 	 *
 	 * TODO 5d: if you're curious, try commenting this out again
 	 * once you've implemented one of TODO 5 & check the result */
+	//wrefresh(output);
 }
 
 int main(int argc, char**argv){
@@ -89,6 +93,8 @@ int main(int argc, char**argv){
 	WINDOW *input = newwin(WIN_HEIGHT, WIN_WIDTH, WIN_START_Y, WIN1_START_X);
 
 	/* TODO 1a: Create output window on the right with heading. Use mvwprintw for heading, & newwin for new window */
+	mvwprintw(stdscr, WIN_START_Y - 2, WIN1_START_X, "%s", "Typing Statistics");
+	WINDOW *output = newwin(WIN_HEIGHT, WIN_WIDTH, WIN_START_Y, WIN1_START_X);
 
 	refresh();
 
@@ -97,6 +103,8 @@ int main(int argc, char**argv){
 	wrefresh(input);
 
 	/* TODO 1b: Create box around output window */
+	box(output,0,0);
+	wrefresh(output);
 
 	int inputChar = 0;
 	int prevChar = -1;
@@ -112,7 +120,7 @@ int main(int argc, char**argv){
     	time(&end_t);
 
 		/* TODO 3: fill in the right parameter for calling printStat */
-		// printStat(_____, start_t, end_t, words);
+		printStat(output, start_t, end_t, words); // output window is the first parameter
 
 		/* Go to next line if width is exhausted */
 		if (input_x == WIN_WIDTH - 1){
@@ -124,11 +132,11 @@ int main(int argc, char**argv){
 		wrefresh(input);
 
 		/* TODO 2a: Use wgetch to take single character input */
-		// inputChar = ___;
+		inputChar = wgetch(input); // From intput window
 
 		/* TODO 2b: getch() was temporarily added for making the window wait for an input.
 		 * Comment this out after TODO 3a is completed.*/
-		getch();
+		//getch();
 
 		/* Handle alphabets */
 		if(is_char(inputChar)) {
