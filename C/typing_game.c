@@ -64,7 +64,10 @@ void printStat(WINDOW* output, time_t start_t, time_t end_t, int words){
 	s = (int)diff_in_sec;
 
 	/* TODO 5c: print timing stats using mvwprintw */
-	mvwprintw(output, LINE, COLUMN, "%s", "Time elapsed till last printed character: ", h, ":", m, ":", s);
+	mvwprintw(output, LINE, COLUMN, "%s\n%s\n%s", 
+		"Time elapsed till last printed character: " + h + ":" + m + ":" + s,
+		"Total words: " + words,
+		"WPM: " + wpm);
 
   	/* TODO 4: refresh window using wrefresh 
 	 * You won't notice a difference though, until one of TODO 5 is implemented
