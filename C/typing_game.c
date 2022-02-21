@@ -44,10 +44,10 @@ char get_first_char_for_case(int c) {
 void printStat(WINDOW* output, time_t start_t, time_t end_t, int words){
 
 	/* TODO 5a: print alphabet frequency stats using mvwprintw */
-	// mvwprintw(WINDOW, LINE, COLUMN, FORMAT, [ARGUMENTS...])
-	mvwprintw(output, line, column, "%s", words);
+	// FUNCTION: mvwprintw(WINDOW, LINE, COLUMN, FORMAT, [ARGUMENTS...]);
+	mvwprintw(output, LINE, COLUMN, "%s", [ARGUMENTS...]);
 	/* TODO 5b: print number frequency stats using mvwprintw */
-	mvwprintw(output, );
+	mvwprintw(output, LINE, COLUMN, "%s", [ARDUMENTS...]);
 
 	/* Print timing stats */
 	double diff_in_sec;
@@ -64,7 +64,7 @@ void printStat(WINDOW* output, time_t start_t, time_t end_t, int words){
 	s = (int)diff_in_sec;
 
 	/* TODO 5c: print timing stats using mvwprintw */
-	mvwprintw(output, );
+	mvwprintw(output, LINE, COLUMN, "%s", "Time elapsed till last printed character: ", h, ":", m, ":", s);
 
   	/* TODO 4: refresh window using wrefresh 
 	 * You won't notice a difference though, until one of TODO 5 is implemented
